@@ -31,6 +31,7 @@
         .container { width: 90%; max-width: 1200px; margin: 0 auto; }
         section { padding: 100px 0; }
         h1, h2, h3, h4 { color: var(--heading-text); line-height: 1.3; }
+        .section-title { text-align: center; font-size: 2.8em; margin-bottom: 60px; }
 
         /* --- Header --- */
         .main-header {
@@ -43,7 +44,7 @@
         .logo { font-size: 1.8em; font-weight: 700; color: var(--heading-text); text-decoration: none; }
         .nav-links { list-style: none; display: flex; gap: 40px; }
         .nav-links a { text-decoration: none; color: var(--light-text); font-weight: 500; transition: color 0.3s ease; }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent-gold); }
+        .nav-links a:hover { color: var(--accent-gold); }
 
         /* --- Buttons --- */
         .btn {
@@ -53,24 +54,21 @@
         .btn-accent { background-color: var(--accent-gold); color: var(--dark-navy); }
         .btn-accent:hover { background-color: var(--accent-gold-hover); transform: translateY(-3px); }
 
-        /* --- Hero Section (Asymmetrical) --- */
+        /* --- Hero Section --- */
         .hero { padding: 80px 0; }
         .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
         .hero-content h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; }
         .hero-content .subtitle { font-size: 1.2em; margin-bottom: 40px; max-width: 500px; }
         .hero-image img { width: 100%; border-radius: 12px; object-fit: cover; }
 
-        /* --- Features Section --- */
-        .features { background-color: var(--charcoal); }
-        .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
-        .feature-card { text-align: center; padding: 20px; }
-        .feature-card .icon { margin-bottom: 20px; }
-        .feature-card .icon svg { width: 48px; height: 48px; stroke: var(--accent-gold); }
-        .feature-card h3 { font-size: 1.5em; margin-bottom: 10px; }
-
-        /* --- Services Section (Interactive List) --- */
-        .section-title { text-align: center; font-size: 2.8em; margin-bottom: 60px; }
-        .services-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; }
+        /* --- About Section --- */
+        .about { background-color: var(--charcoal); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .about-image img { width: 100%; border-radius: 12px; }
+        .about-content h2 { font-size: 2.8em; margin-bottom: 20px; text-align: left; }
+        
+        /* --- Services Section --- */
+        .services-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 50px; align-items: flex-start; }
         .services-list { list-style: none; }
         .services-list li a {
             display: block; padding: 20px; text-decoration: none;
@@ -84,22 +82,36 @@
             border-left: 4px solid var(--accent-gold);
         }
         .service-content h3 { font-size: 2em; margin-bottom: 20px; }
-        .service-content p { margin-bottom: 20px; }
         .service-content img { width: 100%; border-radius: 12px; margin-top: 20px; }
 
+        /* --- Contact Section --- */
+        .contact { background-color: var(--charcoal); }
+        .contact-form {
+            background: var(--dark-navy); padding: 40px; border-radius: 12px;
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; margin-bottom: 8px; font-weight: 500; }
+        .form-group input, .form-group textarea {
+            width: 100%; padding: 15px; border-radius: 8px;
+            border: 1px solid var(--border-color); font-family: 'Inter', sans-serif;
+            background-color: var(--charcoal); color: var(--heading-text);
+        }
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none; border-color: var(--accent-gold);
+        }
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        .contact-details li { list-style: none; margin-bottom: 20px; font-size: 1.1em; }
+        .contact-details svg { vertical-align: middle; margin-right: 15px; stroke: var(--accent-gold); }
+        
         /* --- Responsive Design --- */
         @media (max-width: 992px) {
-            .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .hero-content .subtitle { margin-left: auto; margin-right: auto; }
-            .hero-image { order: -1; margin-bottom: 40px; } /* Image on top on mobile */
-            .features-grid { grid-template-columns: 1fr; }
+            .hero-grid, .about-grid, .contact-grid { grid-template-columns: 1fr; text-align: center; }
+            .about-content h2, .contact-details { text-align: center; }
+            .hero-image { order: -1; margin-bottom: 40px; }
             .services-layout { grid-template-columns: 1fr; }
-            .services-list { display: flex; overflow-x: auto; padding-bottom: 15px; } /* Horizontal scroll on mobile */
-            .services-list li { flex-shrink: 0; }
         }
-
         @media (max-width: 768px) {
-            .nav-links, .main-nav .btn { display: none; } /* Simplified nav for example */
+            .nav-links, .main-nav .btn-accent { display: none; }
             .hero h1 { font-size: 2.8em; }
             section { padding: 60px 0; }
         }
@@ -109,24 +121,24 @@
 
     <header class="main-header">
         <nav class="container main-nav">
-            <a href="#" class="logo">ENORGMA</a>
+            <a href="#home" class="logo">ENORGMA</a>
             <ul class="nav-links">
-                <li><a href="#" class="active">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
-            <a href="#" class="btn btn-accent">Book Now</a>
+            <a href="#contact" class="btn btn-accent">Book Now</a>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
+        <section class="hero" id="home">
             <div class="container hero-grid">
                 <div class="hero-content">
                     <h1>Clarity in Diagnosis. Confidence in Care.</h1>
                     <p class="subtitle">Leveraging state-of-the-art technology and expert analysis to provide you with the most precise diagnostic results.</p>
-                    <a href="#" class="btn btn-accent">Explore Our Services</a>
+                    <a href="#services" class="btn btn-accent">Explore Our Services</a>
                 </div>
                 <div class="hero-image">
                     <img src="https://images.unsplash.com/photo-1579154288924-40969d6322b6?q=80&w=2070&auto=format&fit=crop" alt="Medical professional in a modern lab">
@@ -134,35 +146,27 @@
             </div>
         </section>
 
-        <section class="features">
-            <div class="container features-grid">
-                <div class="feature-card">
-                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
-                    <h3>Advanced Technology</h3>
-                    <p>Utilizing the latest in diagnostic imaging and laboratory equipment for unparalleled accuracy.</p>
+        <section class="about" id="about">
+            <div class="container about-grid">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop" alt="Team of smiling medical professionals">
                 </div>
-                <div class="feature-card">
-                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
-                    <h3>Expert Pathologists</h3>
-                    <p>Our board-certified team provides meticulous analysis and clear, actionable reports.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
-                    <h3>Rapid Results</h3>
-                    <p>We understand the importance of time, delivering your results promptly and securely.</p>
+                <div class="about-content">
+                    <h2>Where Precision Meets Compassion</h2>
+                    <p>Founded on the principle that every patient deserves clarity, Enorgma Diagnostics is a leader in medical imaging and laboratory services. We combine the sharpest analytical minds with the most advanced technology to deliver reports that physicians and patients can trust. Our commitment is to provide a seamless, comfortable, and efficient experience from the moment you walk through our doors.</p>
                 </div>
             </div>
         </section>
 
-        <section class="services">
+        <section class="services" id="services">
             <div class="container">
                 <h2 class="section-title">A Spectrum of Services</h2>
                 <div class="services-layout">
                     <ul class="services-list">
-                        <li><a href="#" class="active">Magnetic Resonance Imaging (MRI)</a></li>
-                        <li><a href="#">Computed Tomography (CT)</a></li>
-                        <li><a href="#">Clinical Pathology</a></li>
-                        <li><a href="#">4D Ultrasound</a></li>
+                        <li><a href="#services" class="active">Magnetic Resonance Imaging (MRI)</a></li>
+                        <li><a href="#services">Computed Tomography (CT)</a></li>
+                        <li><a href="#services">Clinical Pathology</a></li>
+                        <li><a href="#services">4D Ultrasound</a></li>
                     </ul>
                     <div class="service-content">
                         <h3>Magnetic Resonance Imaging (MRI)</h3>
@@ -172,7 +176,29 @@
                 </div>
             </div>
         </section>
-    </main>
 
+        <section class="contact" id="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Book Your Appointment Today</h3>
+                        <p>Our team is ready to assist you. Reach out via phone, email, or visit us at our state-of-the-art facility in Lagos.</p>
+                        <ul class="contact-details">
+                           <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> 123 Healthway Ave, Ikeja, Lagos</li>
+                           <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> +234 800 123 4567</li>
+                           <li><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><polyline points="22,6 12,13 2,6"></polyline></svg> contact@enorgmadiagnostics.com</li>
+                        </ul>
+                    </div>
+                    <form class="contact-form">
+                        <div class="form-group"><input type="text" placeholder="Your Name" required></div>
+                        <div class="form-group"><input type="email" placeholder="Your Email" required></div>
+                        <div class="form-group"><textarea placeholder="Your Message" rows="5" required></textarea></div>
+                        <button type="submit" class="btn btn-accent">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
 </html>
